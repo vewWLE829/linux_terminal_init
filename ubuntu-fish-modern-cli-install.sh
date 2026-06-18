@@ -17,22 +17,36 @@ apt update
 # 1. install fish 4
 # =========================
 step "安装 Fish 4.0+"
+FISH_NEED_INSTALL=false
 
-apt install software-properties-common -y
+if ! command -v fish &>/dev/null; then
+    echo "👉 fish 未安装，开始安装"
+    FISH_NEED_INSTALL=true
+else
+    FISH_VERSION=$(fish --version 2>&1 | grep -oP '\d+' | head -1)
+    if [ "$FISH_VERSION" -lt 4 ]; then
+        echo "👉 fish 版本低于 4.0（当前版本: $(fish --version)），升级安装"
+        FISH_NEED_INSTALL=true
+    else
+        echo "👉 fish 已满足要求（$(fish --version)），跳过安装"
+    fi
+fi
 
-add-apt-repository ppa:fish-shell/release-4 -y
-apt update
-apt install fish -y
+if [ "$FISH_NEED_INSTALL" = true ]; then
+    apt install software-properties-common -y
+    add-apt-repository ppa:fish-shell/release-4 -y
+    apt update
+    apt install fish -y
+fi
 
 step "设置默认 shell 为 fish"
 chsh -s "$(which fish)"
-
 
 # =========================
 # 2. fisher
 # =========================
 step "安装 Fisher 插件管理器"
-if ! command -v fisher >/dev/null 2>&1; then
+if ! fish -c 'type -q fisher'; then
     echo "👉 fisher 未安装，开始安装"
     fish -c '
         curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source
@@ -41,7 +55,6 @@ if ! command -v fisher >/dev/null 2>&1; then
 else
     echo "👉 fisher 已存在，跳过"
 fi
-
 
 # =========================
 # 3. CLI tools
@@ -54,8 +67,7 @@ apt install -y \
     bat \
     zoxide \
     ripgrep \
-    fd-find \ 
-    jq
+    fd-find
 
 
 # =========================
