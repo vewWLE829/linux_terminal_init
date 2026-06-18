@@ -62,7 +62,6 @@ fi
 step "安装现代命令行工具"
 
 apt install -y \
-    fontconfig \
     eza \
     bat \
     zoxide \
@@ -84,6 +83,8 @@ fi
 # 5. fonts
 # =========================
 step "安装 Nerd Font 字体"
+
+apt install -y fontconfig 
 
 mkdir -p /usr/share/fonts/MesloLGS
 
