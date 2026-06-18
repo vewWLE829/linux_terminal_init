@@ -84,6 +84,7 @@ fi
 # =========================
 step "安装 Nerd Font 字体"
 
+echo "安装fontconfig"
 apt install -y fontconfig 
 
 mkdir -p /usr/share/fonts/MesloLGS
