@@ -54,7 +54,8 @@ apt install -y \
     bat \
     zoxide \
     ripgrep \
-    fd-find
+    fd-find \ 
+    jq
 
 
 # =========================
