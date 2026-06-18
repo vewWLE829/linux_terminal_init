@@ -25,10 +25,10 @@ if ! command -v fish &>/dev/null; then
 else
     FISH_VERSION=$(fish --version 2>&1 | grep -oP '\d+' | head -1)
     if [ "$FISH_VERSION" -lt 4 ]; then
-        echo "👉 fish 版本低于 4.0（当前版本: $(fish --version)），升级安装"
+        echo " fish 版本低于 4.0（当前版本: $(fish --version)），升级安装"
         FISH_NEED_INSTALL=true
     else
-        echo "👉 fish 已满足要求（$(fish --version)），跳过安装"
+        echo "✅ fish 已满足要求（$(fish --version)），跳过安装"
     fi
 fi
 
@@ -47,13 +47,13 @@ chsh -s "$(which fish)"
 # =========================
 step "安装 Fisher 插件管理器"
 if ! fish -c 'type -q fisher'; then
-    echo "👉 fisher 未安装，开始安装"
+    echo "fisher 未安装，开始安装"
     fish -c '
         curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source
         fisher install jorgebucaran/fisher
     '
 else
-    echo "👉 fisher 已存在，跳过"
+    echo "✅ fisher 已存在，跳过"
 fi
 
 # =========================
@@ -105,7 +105,7 @@ fc-cache -fv
 # =========================
 # 6. delta install
 # =========================
-step "安装 Delta diff 工具"
+step "安装 Delta 对比工具"
 DELTA_VERSION="0.19.2"
 if ! command -v delta &> /dev/null; then
     wget -q -O /tmp/delta.deb \
@@ -113,7 +113,7 @@ if ! command -v delta &> /dev/null; then
 
     dpkg -i /tmp/delta.deb || apt -f install -y
 else
-    echo "delta already installed: $(delta --version)"
+    echo "✅ delta already installed: $(delta --version)"
 fi
 
 # =========================
@@ -144,4 +144,4 @@ step "设置 Fish prompt 兼容模式"
 
 fish -c "set -Ua fish_features no-mark-prompt" || true
 
-echo "执行完毕"
+echo "✅ 执行完毕"
