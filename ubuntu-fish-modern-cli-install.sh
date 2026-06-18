@@ -108,25 +108,19 @@ fi
 # =========================
 step "生成 fish 配置文件"
 
-mkdir -p ~/.config/fish
+mkdir -p ~/.config/fish/conf.d
 
-cat > ~/.config/fish/config.fish << 'EOF'
-if status is-interactive
-    
-    alias cat='bat'
-    
-    alias diff='delta --side-by-side'
+cat > ~/.config/fish/conf.d/aliases.fish << 'EOF'
+alias cat='bat'
+alias diff='delta --side-by-side'
+alias ls='eza --icons'
+alias ll='eza -la --icons'
+alias la='eza -a --icons'
+alias lt='eza --tree --level=2 --icons'
+EOF
 
-    # eza
-    alias ls='eza --icons'
-    alias ll='eza -la --icons'
-    alias la='eza -a --icons'
-    alias lt='eza --tree --level=2 --icons'
-
-    # zoxide
-    zoxide init fish | source
-
-end
+cat > ~/.config/fish/conf.d/zoxide.fish << 'EOF'
+zoxide init fish | source
 EOF
 
 
