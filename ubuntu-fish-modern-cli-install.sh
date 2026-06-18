@@ -37,10 +37,10 @@ if [ "$FISH_NEED_INSTALL" = true ]; then
     add-apt-repository ppa:fish-shell/release-4 -y
     apt update
     apt install fish -y
-fi
 
-step "设置默认 shell 为 fish"
-chsh -s "$(which fish)"
+    step "设置默认 shell 为 fish"
+    chsh -s "$(which fish)"
+fi
 
 # =========================
 # 2. fisher
