@@ -32,11 +32,15 @@ chsh -s "$(which fish)"
 # 2. fisher
 # =========================
 step "安装 Fisher 插件管理器"
-
-fish -c '
-curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source
-fisher install jorgebucaran/fisher
-'
+if ! command -v fisher >/dev/null 2>&1; then
+    echo "👉 fisher 未安装，开始安装"
+    fish -c '
+        curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source
+        fisher install jorgebucaran/fisher
+    '
+else
+    echo "👉 fisher 已存在，跳过"
+fi
 
 
 # =========================
@@ -89,14 +93,15 @@ fc-cache -fv
 # 6. delta install
 # =========================
 step "安装 Delta diff 工具"
-
 DELTA_VERSION="0.19.2"
+if ! command -v delta &> /dev/null; then
+    wget -q -O /tmp/delta.deb \
+    https://github.com/dandavison/delta/releases/download/${DELTA_VERSION}/git-delta_${DELTA_VERSION}_amd64.deb
 
-wget -q -O /tmp/delta.deb \
-https://github.com/dandavison/delta/releases/download/${DELTA_VERSION}/git-delta_${DELTA_VERSION}_amd64.deb
-
-dpkg -i /tmp/delta.deb || apt -f install -y
-
+    dpkg -i /tmp/delta.deb || apt -f install -y
+else
+    echo "delta already installed: $(delta --version)"
+fi
 
 # =========================
 # 7. fish config
