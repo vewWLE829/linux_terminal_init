@@ -28,7 +28,7 @@ else
         echo " fish 版本低于 4.0（当前版本: $(fish --version)），升级安装"
         FISH_NEED_INSTALL=true
     else
-        echo "✅ fish 已满足要求（$(fish --version)），跳过安装"
+        echo "✅ fish（$(fish --version)） 已安装，跳过"
     fi
 fi
 
@@ -87,16 +87,16 @@ step "安装 Nerd Font 字体"
 
 mkdir -p /usr/share/fonts/MesloLGS
 
-wget -q -P /usr/share/fonts/MesloLGS \
+wget -q --show-progress -P /usr/share/fonts/MesloLGS \
 https://github.com/romkatv/dotfiles-public/raw/master/.local/share/fonts/NerdFonts/MesloLGS%20NF%20Regular.ttf
 
-wget -q -P /usr/share/fonts/MesloLGS \
+wget -q --show-progress -P /usr/share/fonts/MesloLGS \
 https://github.com/romkatv/dotfiles-public/raw/master/.local/share/fonts/NerdFonts/MesloLGS%20NF%20Bold.ttf
 
-wget -q -P /usr/share/fonts/MesloLGS \
+wget -q --show-progress -P /usr/share/fonts/MesloLGS \
 https://github.com/romkatv/dotfiles-public/raw/master/.local/share/fonts/NerdFonts/MesloLGS%20NF%20Italic.ttf
 
-wget -q -P /usr/share/fonts/MesloLGS \
+wget -q --show-progress -P /usr/share/fonts/MesloLGS \
 https://github.com/romkatv/dotfiles-public/raw/master/.local/share/fonts/NerdFonts/MesloLGS%20NF%20Bold%20Italic.ttf
 
 fc-cache -fv
