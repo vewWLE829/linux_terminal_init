@@ -87,6 +87,15 @@ if [ ! -f /usr/local/bin/fd ]; then
     ln -sf "$(which fdfind)" /usr/local/bin/fd
 fi
 
+# =========================
+# 4.1 bat compatibility
+# =========================
+step "配置 bat 命令兼容性"
+
+if [ ! -f /usr/local/bin/fd ]; then
+    ln -sf "$(which batcat)" /usr/local/bin/bat
+fi
+
 
 # =========================
 # 5. fonts
