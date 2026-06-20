@@ -52,21 +52,7 @@ fish -c "set -Ua fish_features no-mark-prompt" || true
 
 
 # =========================
-# 2. fisher
-# =========================
-step "安装 Fisher 插件管理器"
-if ! fish -c 'type -q fisher'; then
-    echo "fisher 未安装，开始安装"
-    fish -c '
-        curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source
-        fisher install jorgebucaran/fisher
-    '
-else
-    echo "✅ fisher 已存在，跳过"
-fi
-
-# =========================
-# 3. CLI tools
+# 2. CLI tools
 # =========================
 step "安装现代命令行工具"
 
@@ -79,7 +65,7 @@ apt install -y \
 
 
 # =========================
-# 4. fd compatibility
+# 3. fd compatibility
 # =========================
 step "配置 fd 命令兼容性"
 
@@ -88,7 +74,7 @@ if [ ! -f /usr/local/bin/fd ]; then
 fi
 
 # =========================
-# 4.1 bat compatibility
+# 3.1 bat compatibility
 # =========================
 step "配置 bat 命令兼容性"
 
@@ -98,7 +84,7 @@ fi
 
 
 # =========================
-# 5. fonts
+# 4. fonts
 # =========================
 step "安装 Nerd Font 字体"
 
@@ -123,7 +109,7 @@ fc-cache -fv
 
 
 # =========================
-# 6. delta install
+# 5. delta install
 # =========================
 step "安装 Delta 对比工具"
 DELTA_VERSION="0.19.2"
@@ -137,7 +123,7 @@ else
 fi
 
 # =========================
-# 7. 安装tldr
+# 6. 安装tldr
 # =========================
 TLDR_URL="https://github.com/tealdeer-rs/tealdeer/releases/download/v1.8.1/tealdeer-linux-x86_64-musl"
 wget -O tealdeer-linux-x86_64-musl $TLDR_URL
@@ -145,7 +131,7 @@ chmod +x tealdeer-linux-x86_64-musl
 mv tealdeer-linux-x86_64-musl /usr/local/bin/tldr
 
 # =========================
-# 8. fish config
+# 7. fish config
 # =========================
 step "生成 fish 配置文件"
 
