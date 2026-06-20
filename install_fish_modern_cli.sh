@@ -78,7 +78,7 @@ fi
 # =========================
 step "配置 bat 命令兼容性"
 
-if [ ! -f /usr/local/bin/fd ]; then
+if [ ! -f /usr/local/bin/bat ]; then
     ln -sf "$(which batcat)" /usr/local/bin/bat
 fi
 
