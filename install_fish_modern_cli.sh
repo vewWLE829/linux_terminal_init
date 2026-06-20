@@ -42,6 +42,15 @@ if [ "$FISH_NEED_INSTALL" = true ]; then
     chsh -s "$(which fish)"
 fi
 
+
+# =========================
+# 1.1. fish feature flag
+# =========================
+step "设置 Fish prompt 兼容模式"
+
+fish -c "set -Ua fish_features no-mark-prompt" || true
+
+
 # =========================
 # 2. fisher
 # =========================
@@ -137,13 +146,5 @@ EOF
 cat > ~/.config/fish/conf.d/zoxide.fish << 'EOF'
 zoxide init fish | source
 EOF
-
-
-# =========================
-# 8. fish feature flag
-# =========================
-step "设置 Fish prompt 兼容模式"
-
-fish -c "set -Ua fish_features no-mark-prompt" || true
 
 echo "✅ 执行完毕"
