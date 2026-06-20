@@ -137,7 +137,15 @@ else
 fi
 
 # =========================
-# 7. fish config
+# 7. 安装tldr
+# =========================
+TLDR_URL="https://github.com/tealdeer-rs/tealdeer/releases/download/v1.8.1/tealdeer-linux-x86_64-musl"
+wget -O tealdeer-linux-x86_64-musl $TLDR_URL
+chmod +x tealdeer-linux-x86_64-musl
+mv tealdeer-linux-x86_64-musl /usr/local/bin/tldr
+
+# =========================
+# 8. fish config
 # =========================
 step "生成 fish 配置文件"
 
