@@ -4,6 +4,7 @@
 echo "安装fontconfig"
 apt install -y fontconfig 
 
+echo "安装字体MesloLGS"
 mkdir -p /usr/share/fonts/MesloLGS
 
 wget -q --show-progress -P /usr/share/fonts/MesloLGS \
