@@ -84,32 +84,7 @@ fi
 
 
 # =========================
-# 4. fonts
-# =========================
-step "安装 Nerd Font 字体"
-
-echo "安装fontconfig"
-apt install -y fontconfig 
-
-mkdir -p /usr/share/fonts/MesloLGS
-
-wget -q --show-progress -P /usr/share/fonts/MesloLGS \
-https://github.com/romkatv/dotfiles-public/raw/master/.local/share/fonts/NerdFonts/MesloLGS%20NF%20Regular.ttf
-
-wget -q --show-progress -P /usr/share/fonts/MesloLGS \
-https://github.com/romkatv/dotfiles-public/raw/master/.local/share/fonts/NerdFonts/MesloLGS%20NF%20Bold.ttf
-
-wget -q --show-progress -P /usr/share/fonts/MesloLGS \
-https://github.com/romkatv/dotfiles-public/raw/master/.local/share/fonts/NerdFonts/MesloLGS%20NF%20Italic.ttf
-
-wget -q --show-progress -P /usr/share/fonts/MesloLGS \
-https://github.com/romkatv/dotfiles-public/raw/master/.local/share/fonts/NerdFonts/MesloLGS%20NF%20Bold%20Italic.ttf
-
-fc-cache -fv
-
-
-# =========================
-# 5. delta install
+# 4. delta install
 # =========================
 step "安装 Delta 对比工具"
 DELTA_VERSION="0.19.2"
@@ -123,7 +98,7 @@ else
 fi
 
 # =========================
-# 6. 安装tldr
+# 5. 安装tldr
 # =========================
 TLDR_URL="https://github.com/tealdeer-rs/tealdeer/releases/download/v1.8.1/tealdeer-linux-x86_64-musl"
 wget -O tealdeer-linux-x86_64-musl $TLDR_URL
@@ -131,7 +106,7 @@ chmod +x tealdeer-linux-x86_64-musl
 mv tealdeer-linux-x86_64-musl /usr/local/bin/tldr
 
 # =========================
-# 7. fish config
+# 6. fish config
 # =========================
 step "生成 fish 配置文件"
 
