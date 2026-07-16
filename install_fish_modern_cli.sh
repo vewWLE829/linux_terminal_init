@@ -44,14 +44,6 @@ fi
 
 
 # =========================
-# 1.1. fish feature flag, 关闭 OSC 133 提示标记
-# =========================
-step "设置 Fish prompt 兼容模式, 关闭 OSC 133 提示标记"
-
-fish -c "set -Ua fish_features no-mark-prompt" || true
-
-
-# =========================
 # 2. CLI tools
 # =========================
 step "安装现代命令行工具"
